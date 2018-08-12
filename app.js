@@ -28,9 +28,10 @@ app.post('/register',function(req,res){
     from: 'info@jackistyle.se',
     to: 'info@jackistyle.se',
     subject: 'New sign up!',
-    text: email,
-    html: email
-  }).then(info => res.send(info)).catch(e => res.send(e))
+    text: email + 'has signed up!',
+    }).then(info => res.json({ result: 'ok' })).catch(e => res.status(500).json({ result: 'error' }))
+  })
+
 })
 
 const port = process.env.PORT || 3000
