@@ -20,7 +20,7 @@ var smtpTransport = nodemailer.createTransport({
 app.get('/', (req, res) => res.send('Hello World!'))
 
 
-app.get('/register',function(req,res){
+app.post('/register',function(req,res){
     var mailOptions={
         to : req.query.to,
     }
