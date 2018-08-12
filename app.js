@@ -28,7 +28,7 @@ app.post('/register',function(req,res){
     from: 'info@jackistyle.se',
     to: 'info@jackistyle.se',
     subject: 'New sign up!',
-    text: email + 'has signed up!',
+    text: email,
     }).then(info => res.json({ result: 'ok' })).catch(e => res.status(500).json({ result: 'error' }))
   })
 
