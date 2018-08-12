@@ -7,19 +7,13 @@ const app=express();
     STMP is mail server which is responsible for sending and recieving email.
 */
 var smtpTransport = nodemailer.createTransport({
-    // service: "IMAP",
-    // host: "cpsrv07.misshosting.com",
-    // port: 465,
-    // secure: true,
-    // auth: {
-    //     user: "info@jackistyle.se",
-    //     pass: ""
-    // }
-    service: "gmail",
-    host:  "smtp.gmail.com",
+    service: "IMAP",
+    host: "cpsrv07.misshosting.com",
+    port: 465,
+    secure: true,
     auth: {
-        user: "infojackistyle@gmail.com",
-        pass: process.env.gmail_password
+        user: "info@jackistyle",
+        pass: process.env.email_password
     }
 });
 /*------------------SMTP Over-----------------------------*/
