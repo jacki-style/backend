@@ -33,6 +33,6 @@ app.post('/register',function(req,res){
   }).then(info => res.send(info)).catch(e => res.send(e))
 })
 
-app.listen(process.env.PORT || 3000,function(){
-console.log("Express Started on Port 3000");
-});
+const port = process.env.PORT || 3000
+
+app.listen(port, () => console.log(`Server started on port ${port}`))
