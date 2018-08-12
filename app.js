@@ -1,11 +1,7 @@
-const express=require('express');
-const nodemailer = require("nodemailer");
-const app=express();
+const express = require('express');
+const nodemailer = require('nodemailer');
+const app = express();
 
-/*
-    Here we are configuring our SMTP Server details.
-    STMP is mail server which is responsible for sending and recieving email.
-*/
 const transporter = nodemailer.createTransport({
   host: 'cpsrv07.misshosting.com',
   port: 465,
@@ -15,8 +11,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.email_password
   }
 })
-/*------------------SMTP Over-----------------------------*/
-
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
@@ -29,9 +23,8 @@ app.post('/register',function(req,res){
     to: 'info@jackistyle.se',
     subject: 'New sign up!',
     text: email,
-    }).then(info => res.json({ result: 'ok' })).catch(e => res.status(500).json({ result: 'error' }))
-  })
-
+    html: email
+  }).then(info => res.json({ result: 'ok' })).catch(e => res.status(500).json({ result: 'error' }))
 })
 
 const port = process.env.PORT || 3000
