@@ -18,7 +18,7 @@ var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     host:  "smtp.gmail.com",
     auth: {
-        user: "michelletl94@gmail.com",
+        user: "infojackistyle4@gmail.com",
         pass: process.env.gmail_password
     }
 });
@@ -41,7 +41,7 @@ app.post('/register',function(req,res){
             console.log("Message sent: " + response.message);
         res.end("sent");
          }
-});
+       });
 });
 
 app.listen(process.env.PORT || 3000,function(){
