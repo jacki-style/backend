@@ -24,7 +24,13 @@ app.post('/register',function(req,res){
     subject: 'New sign up!',
     text: email,
     html: email
-  }).then(info => res.json({ result: 'ok' })).catch(e => res.status(500).json({ result: 'error' }))
+  }).then((info) => {
+    console.log(`Sent email to info@jackistyle.se`)
+    res.json({ result: 'ok' })
+  }).catch((e) => {
+    console.error(e)
+    res.status(500).json({ result: 'error' })
+  })
 })
 
 const port = process.env.PORT || 3000
