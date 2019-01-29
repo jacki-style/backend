@@ -7,8 +7,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'info@jackistyle.se',
-    pass: process.env.email_password
+    user: 'info@jacki.se',
+    pass: process.env.email_password_jacki
   }
 })
 
@@ -27,12 +27,13 @@ app.post('/register',function(req,res){
 
 Vad roligt att du är intresserad av vår tjänst, JACKI! Tjänsten är till för dig och alla andra där ute som inte alltid har den lilla extra tiden för att gå ut på stan och shoppa eller att bläddra igenom allt för många olika shoppingsidor online.
 
-När tjänsten är redo att lanseras så kommer du få ett mejl där du kan fylla i ditt personliga stiltest. Under tiden så får ni gärna lämna feedback eller önskemål till oss genom att svara på mejlet.
+Du har skrivits upp på vår lista och när din tur är kommen så kommer du få ett mejl där du kan fylla i ditt personliga stiltest. Under tiden så får ni gärna lämna feedback eller önskemål till oss genom att svara på mejlet.
 
 Stay tuned!
 
 Grundare & VD,
 Michelle
+michelle@jacki.se
 `
   const customerHtmlEmail = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -88,7 +89,7 @@ body{font-family:Helvetica,Arial;font-size:13px}
                         </div>
                         <div>
                             <span style="background-color: rgba(255, 255, 255, 0); font-size: 14px;">
-                                <font face="HelveticaNeue">När tjänsten är redo att lanseras så kommer du få ett mejl där du kan fylla i ditt personliga stiltest. Under tiden så får ni gärna lämna feedback eller önskemål till oss genom att svara på mejlet.</font>
+                                <font face="HelveticaNeue">Du har skrivits upp på vår lista och när din tur är kommen så kommer du få ett mejl där du kan fylla i ditt personliga stiltest. Under tiden så får ni gärna lämna feedback eller önskemål till oss genom att svara på mejlet.</font>
                             </span>
                         </div>
                         <div>
@@ -121,6 +122,11 @@ body{font-family:Helvetica,Arial;font-size:13px}
                             </span>
                         </div>
                         <div>
+                            <span style="background-color: rgba(255, 255, 255, 0); font-size: 14px;">
+                                <font face="HelveticaNeue">michelle@jacki.se</font>
+                            </span>
+                        </div>
+                        <div>
                             <span style="background-color: rgba(255, 255, 255, 0);">
                                 <br />
                             </span>
@@ -135,22 +141,36 @@ body{font-family:Helvetica,Arial;font-size:13px}
                     </font>
                 </div>
                 <div id="bloop_sign_1535387007230392832" class="bloop_sign"></div>
+                <div id="bloop_sign_1535387007230392832" class="bloop_sign">
+                    <br />
+                </div>
+                <div id="bloop_sign_1535387007230392832" class="bloop_sign">
+                    <font face="HelveticaNeue-Italic" size="1">
+                        <i>*Svara på mejlet om du inte längre vill få mejl från JACKI</i>
+                    </font>
+                </div>
+                <div id="bloop_sign_1535387007230392832" class="bloop_sign">
+                    <br />
+                </div>
+                <div id="bloop_sign_1535387007230392832" class="bloop_sign">
+                    <br />
+                </div>
             </div>
         </div>
     </body>
 </html>`
 
   transporter.sendMail({
-    from: 'info@jackistyle.se',
-    to: 'info@jackistyle.se',
+    from: 'info@jacki.se',
+    to: 'info@jacki.se',
     subject: 'New sign up!',
     text: email,
     html: email
   }).then((info) => {
-    console.log(`Sent email to info@jackistyle.se`)
+    console.log(`Sent email to info@jacki.se`)
 
     return transporter.sendMail({
-      from: 'info@jackistyle.se',
+      from: 'info@jacki.se',
       to: email,
       subject: 'Välkommen till JACKI!',
       text: customerEmail,
