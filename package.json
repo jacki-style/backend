@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jacki-style/backend#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "nodemailer": "latest"
+    "nodemailer": "latest",
+    "request": "^2.88.0"
   }
 }
