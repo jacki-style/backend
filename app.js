@@ -30,49 +30,19 @@ const mailchimpInstance = 'us7'
 
 app.post('/register',function(req,res){
 
-  var options = { method: 'POST',
-    url: 'https://us7.api.mailchimp.com/3.0/lists/'+ listID +'/members/',
-    headers:
-     {
-       'cache-control': 'no-cache',
-       Authorization: 'Basic ' + new Buffer(mailchimpUsername + ':' + mailchimpAPIKey ).toString('base64'),
-     },
-    body: {
-      'email_address': req.query.email,
-      'status': 'subscribed',
-      'merge_fields': {
-      }
-    },
-    json: true
-  };
-
-  request(options, function (error, response, body) {
-    if (error) {
-      console.error('error on mailchimp register, try 1', error);
-      return request(options, function (error, response, body) {
-        if (error) {
-          console.error('error on mailchimp register, try 2', error);
-          return res.status(500).json({ result: 'error' })
-        }
-        console.log('Added ' + req.query.email + ' to the subscriptionList')
-        res.json({ result: 'ok' })
-      })
-    }
-    console.log('Added ' + req.query.email + ' to the subscriptionList')
-    transporter.sendMail({
-      from: 'info@jacki.se',
-      to: 'info@jacki.se',
-      subject: 'New sign up!',
-      text: req.query.email,
-      html: req.query.email
-    }).then((info) => {
-      console.log(`Sent email to info@jacki.se`)
-      res.json({ result: 'ok' })
-    }).catch((e) => {
-      console.error(e)
-      res.status(500).json({ result: 'error' })
-    })
-  });
+  transporter.sendMail({
+    from: 'info@jacki.se',
+    to: 'info@jacki.se',
+    subject: 'Someone wants to fill in styleprofile!',
+    text: req.query.email,
+    html: req.query.email
+  }).then((info) => {
+    console.log(`Sent email to info@jacki.se`)
+    res.json({ result: 'ok' })
+  }).catch((e) => {
+    console.error(e)
+    res.status(500).json({ result: 'error' })
+  })
 })
 
 app.listen(port, () => console.log(`Server started on port ${port}`))
